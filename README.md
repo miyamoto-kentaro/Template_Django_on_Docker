@@ -1,5 +1,6 @@
 # git setting
 
+```
 echo "# Template_Django_on_Docker" >> README.md
 git init
 git add README.md
@@ -7,9 +8,11 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/miyamoto-kentaro/Template_Django_on_Docker.git
 git push -u origin main
+```
 
 # django setup
 
+```
 create django dir as "app"
 $ cd app
 /app$ python3 -m venv .venv
@@ -28,9 +31,11 @@ config is django application folder. it's able to changed.
 (.venv)/app$
 (.venv)/app$
 (.venv)/app$
+```
 
 # docker setup
 
+```
 create docker file and docker compose.yaml
 
 $ docker-compose build
@@ -38,3 +43,4 @@ $ docker-compose up -d
 $ connect localhost:8000
 if you want to see log
 $ docker-compose logs -f
+```
