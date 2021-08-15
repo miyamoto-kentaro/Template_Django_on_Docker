@@ -43,4 +43,36 @@ $ docker-compose up -d
 $ connect localhost:8000
 if you want to see log
 $ docker-compose logs -f
+
+$ docker-compose up -d --build
+
+check the create volum
+$ docker volume ls
+[O]:
+DRIVER    VOLUME NAME
+local     template_django_on_docker_postgres_data
+$ docker volume inspect template_django_on_docker_postgres_data
+
+create sh file into app
+$ chmod +x app/entrypoint.sh
+
+$ docker-compose -f docker-compose.prod.yaml up -d --build
+```
+
+## database setup with django
+
+```
+$ docker-compose exec web python manage.py migrate --noinput
+$ docker-compose exec db psql --username=hello_django --dbname=hello_django_dev
+
+killing container with volumes
+$ docker-compose down -v
+
+finaly up
+$ docker-compose -f docker-compose.prod.yaml down -v
+$ docker-compose -f docker-compose.prod.yaml up -d --build
+$ docker-compose -f docker-compose.prod.yaml exec web python manage.py migrate --noinput
+$ docker-compose -f docker-compose.prod.yaml exec web python manage.py collectstatic --no-input --clear
+
+$ docker-compose logs -f
 ```
